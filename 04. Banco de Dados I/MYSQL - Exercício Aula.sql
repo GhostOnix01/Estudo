@@ -1,0 +1,1 @@
+SELECT * FROM aula2.departamentos;
