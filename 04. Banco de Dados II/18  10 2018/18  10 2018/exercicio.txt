@@ -1,0 +1,45 @@
+/* Exercicio 1 */
+SELECT Sigla_Est as 'Sigla', Nome_Cid as 'Nome da cidade'
+FROM Cidade
+GROUP BY Sigla_Est, Nome_Cid
+
+/* Exercicio 2 */
+SELECT Nome_Cli as 'Nome do Cliente', CONVERT(CHAR, Data_CadCli, 103) as 'Data', Renda_Cli as 'Renda'
+FROM Cliente
+ORDER BY Data_CadCli DESC
+
+
+CASE 
+
+/* Exercicio 3 */
+SELECT Nome_Cli as 'Nome do Cliente', Data_CadCli as 'Data', Sexo_cli as 'Sexo',  
+CASE
+	WHEN Cod_Cli = 1 THEN Renda_Cli
+END as 'Renda'
+FROM Cliente
+
+WHERE 
+
+/* Exercicio 4 */
+SELECT *
+from Historico
+WHERE Cod_Func = 1
+
+/* Exercicio 5 */
+SELECT p.Nome_Prod as 'Nome do produto', tp.Nome_TipoProd as 'Tipo do produto', p.Qtd_EstqProd as 'Quantidade',
+p.Val_UnitProd as 'Valor unitário'
+FROM Produto p  inner join TipoProd tp on p.Cod_TipoProd = tp.Cod_TipoProd
+
+/* Exercicio 6 */
+SELECT Nome_Cli 'Nome do Cliente', Renda_Cli as 'Renda', Renda_cli+(Renda_Cli*0.10) as 'Renda com acréscimo'
+FROM Cliente
+
+/* Exercicio 7 */
+SELECT Nome_Cli as 'Nome do Cliente', Renda_Cli as 'Renda', Renda_Cli+(Renda_Cli*0.10) as 'Renda com acréscimo'
+FROM Cliente
+WHERE Renda_Cli <= 1000.00
+
+/* Exericio 8 */
+SELECT Nome_Cli as 'Nome Cliente', Sexo_Cli as 'Sexo', Renda_Cli+(Renda_Cli*0.20) as 'Renda com acréscimo'
+	from Cliente
+	WHERE Sexo_Cli = 'F' AND Renda_Cli < 1000.00
